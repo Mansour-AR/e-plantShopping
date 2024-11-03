@@ -28,6 +28,10 @@ const CartItem = ({ onContinueShopping }) => {
     }
   };
 
+  const handleCheckoutShopping = (e) => {
+    alert('Functionality to be added for future reference');
+  };
+
   const handleIncrement = (item) => {
     const currentQuantity = parseInt(item.quantity) || 0;
     dispatch(updateQuantity({
@@ -51,9 +55,11 @@ const CartItem = ({ onContinueShopping }) => {
   };
 
   const handleRemove = (item) => {
-    dispatch(removeItem(item));
+    dispatch(removeItem(item.name));
+    if (cartCount > 0) {
+        setCartCount(cartCount - 1);
+      }
   };
-
   // Calculate total cost based on quantity for an item
   const calculateTotalCost = (item) => {
           // Convert cost and quantity to numbers and check if they're valid
@@ -87,7 +93,7 @@ const CartItem = ({ onContinueShopping }) => {
       <div className="continue_shopping_btn">
         <button className="get-started-button" onClick={handleContinueShopping}>Continue Shopping</button>
         <br />
-        <button className="get-started-button1">Checkout</button>
+        <button className="get-started-button1" onClick={() => alert('Checkout functionality to be implemented')}>Checkout</button>
       </div>
     </div>
   );
